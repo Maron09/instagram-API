@@ -31,8 +31,8 @@ def retrieve_profile_info(username: str):
                 'Bio': profile.biography,
                 'Bio_hashtags': profile.biography_hashtags,
                 'Bio_mentions': profile.biography_mentions,
-                'Number of Posts': profile.mediacount,
-                'External URL': profile.external_url,
+                'Number_of_Posts': profile.mediacount,
+                'External_URL': profile.external_url,
             },
             'Contact_info': {
                 'Emails': emails,
