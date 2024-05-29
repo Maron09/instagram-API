@@ -25,13 +25,14 @@ def retrieve_profile_info(username: str):
         profile_info = {
             'user_info':{
                 'Username': profile.username,
+                'Full_Name': profile.full_name,
                 'Followers': profile.followers,
                 'Following': profile.followees,
                 'Bio': profile.biography,
                 'Bio_hashtags': profile.biography_hashtags,
                 'Bio_mentions': profile.biography_mentions,
                 'Number of Posts': profile.mediacount,
-                'External URL': profile.external_url
+                'External URL': profile.external_url,
             },
             'Contact_info': {
                 'Emails': emails,
