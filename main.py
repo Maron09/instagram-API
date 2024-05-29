@@ -9,7 +9,7 @@ from user_post import retrieve_post_metrics
 from media import get_post_details
 
 app = FastAPI(middleware=[
-    Middleware(TimeoutMiddleware, timeout=60)  # Set a global timeout of 15 seconds
+    Middleware(TimeoutMiddleware, timeout=60)
 ])
 
 @app.get('/v1/api/profile')
