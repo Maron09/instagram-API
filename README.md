@@ -1,60 +1,136 @@
 # Instagram API
 
-This project provides an API for retrieving profile information and media details from Instagram. It's built using **FastAPI** framework, allowing for efficient and scalable web services. The API endpoints are designed to fetch profile information and media details based on usernames and URLs respectively.
+## Overview
 
-## Setup
+Instagram API is a FastAPI-based application that provides various endpoints to interact with Instagram's functionalities, including user authentication, profile information retrieval, post metrics, and media details. The service incorporates middleware for timeout handling and authentication.
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/maron09/Instagram-API.git
-    ```
+## Features
 
-2. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Run the server:
-    ```bash
-    fastapi dev <name_of_py_file>
-    ```
-    or:
-    ```bash
-    python <name_of_py_file>
-    ```
+- **User Login:** Authenticate users using their Instagram credentials.
+- **Profile Information:** Retrieve profile information for a given username.
+- **User Posts:** Fetch post metrics for a specified user within optional date ranges.
+- **Media Details:** Obtain details of a specific media post using its URL.
+- **Media Likers:** Get the list of users who liked a particular media post.
 
 ## Endpoints
 
-### 1. Profile Info
-- **Endpoint:** `/v1/api/profile`
-- **Method:** `GET`
-- **Description:** Retrieves profile information for a given username.
-- **Query Parameters:**
-    - `username`: Username of the profile to retrieve.
-- **Example:**
-    ```bash
-    GET /v1/api/profile?username=johndoe
-    ```
+### 1. User Login
+**URL:** `/v1/api/login`  
+**Method:** `POST`  
+**Description:** Authenticates a user with their Instagram credentials.
 
-### 2. Media Details
-- **Endpoint:** `/v1/api/media`
-- **Method:** `GET`
-- **Description:** Retrieves details of media based on the provided URL.
-- **Query Parameters:**
-    - `url`: URL of the media to retrieve details for.
-- **Example:**
-    ```bash
-    GET /v1/api/media?url=https://www.instagram.com/p/ABC123/
-    ```
+**Request Body:**
+```json
+{
+  "username": "string",
+  "password": "string"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Login Successful",
+  "username": "string"
+}
+```
+
+### 2. Profile Information
+**URL:** `/v1/api/profile`  
+**Method:** `GET`  
+**Description:** Retrieves profile information for a given username.
+
+**Query Parameters:**
+- `username` (required): The username of the profile to retrieve.
+
+**Response:**
+```json
+{
+  "profile_data": { /* Profile information */ }
+}
+```
+
+### 3. User Posts
+**URL:** `/v1/api/user_posts`  
+**Method:** `GET`  
+**Description:** Fetches post metrics for a specified user within optional date ranges.
+
+**Query Parameters:**
+- `username` (required): The username to retrieve posts for.
+- `from_date` (optional): Start date for post retrieval (YYYY-MM-DD).
+- `to_date` (optional): End date for post retrieval (YYYY-MM-DD).
+
+**Response:**
+```json
+{
+  "posts": [ /* List of posts */ ]
+}
+```
+
+### 4. Media Details
+**URL:** `/v1/api/media`  
+**Method:** `GET`  
+**Description:** Retrieves details of a specific media post using its URL.
+
+**Query Parameters:**
+- `url` (required): The URL of the media to retrieve details for.
+
+**Response:**
+```json
+{
+  "media_details": { /* Media details */ }
+}
+```
+
+### 5. Media Likers
+**URL:** `/v1/api/media_likers`  
+**Method:** `GET`  
+**Description:** Gets the list of users who liked a particular media post.
+
+**Query Parameters:**
+- `media_id` (required): The media ID in the format `{post_id}_{owner_id}`.
+- `username` (required): The username of the logged-in user.
+
+**Response:**
+```json
+{
+  "likers": [ /* List of likers */ ]
+}
+```
 
 ## Middleware
 
-A custom middleware `TimeoutMiddleware` is included to set a global timeout of 60 seconds for requests. This helps in handling requests more efficiently, preventing potential bottlenecks or long-running processes.
+### TimeoutMiddleware
+Handles request timeouts. The timeout is set to 600 seconds.
+
+### AuthenticationMiddleware
+Handles authentication using the Instagram service.
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/maron09/instagram-api.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd instagram-api
+   ```
+3. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the application:
+   ```bash
+   fastapi dev main.py
+   ```
 
 ## Usage
 
-To use the API, simply make HTTP requests to the specified endpoints with appropriate parameters. The API will return JSON responses containing the requested data.
+Access the API endpoints at `http://127.0.0.1:8000`. Use tools like `curl`, Postman, or any HTTP client to interact with the endpoints.
 
-## Contributing
+## Author
 
-Contributions are welcome! Feel free to submit issues or pull requests for any improvements or bug fixes.
+**maron09**
+
+GitHub: [maron09](https://github.com/maron09)
