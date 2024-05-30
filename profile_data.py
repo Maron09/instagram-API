@@ -24,6 +24,7 @@ def retrieve_profile_info(username: str):
         # Access profile details
         profile_info = {
             'user_info':{
+                'uniqueID': profile.userid,
                 'Username': profile.username,
                 'Full_Name': profile.full_name,
                 'Followers': profile.followers,
