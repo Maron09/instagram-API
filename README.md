@@ -1,7 +1,5 @@
 
-![5d3928b2-bd6f-4af7-89f5-e84e904165df](https://github.com/Maron09/instagram-API/assets/107930543/1d445e7e-f9c5-4e42-9d9a-e582ecb3801f)
-
-
+![9ffeb9de-f118-4fc1-8725-5ec2f075bf8e](https://github.com/Maron09/instagram-API/assets/107930543/43e09586-c841-4ec8-8b63-7e0eac67d82f)
 
 
 # Instagram API
