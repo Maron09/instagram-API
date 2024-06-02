@@ -110,6 +110,15 @@ Handles request timeouts. The timeout is set to 600 seconds.
 ### AuthenticationMiddleware
 Handles authentication using the Instagram service.
 
+
+
+## Packages Used
+This project makes use of several third-party libraries:
+* Instaloader: A tool to download pictures (or videos) along with their captions and other metadata from Instagram.
+* Instagpy: An Instagram automation tool.
+* Instagrapi: A fast and effective Instagram Private API wrapper (compatible with Python 3.7+).
+
+
 ## Installation
 
 1. Clone the repository:
